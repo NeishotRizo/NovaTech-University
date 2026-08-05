@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Administrador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <h1>Lista de Estudiantes</h1>
+    <h2>Buscar por carrera</h2>
+
+    <select id="filtroCarrera">
+
+        <option value="">Todas</option>
+        <option>Sistemas</option>
+        <option>Industrial</option>
+        <option>Civil</option>
+
+    </select>
+
+    <button id="btnBuscar">
+
+        Buscar
+
+    </button>
+
+    <table border="1">
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Preparatoria</th>
+                <th>Promedio</th>
+                <th>Carrera</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tablaEstudiantes">
+
+        </tbody>
+
+    </table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+
+</html>
