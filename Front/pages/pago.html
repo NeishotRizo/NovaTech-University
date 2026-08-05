@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+    <link rel="icon" type="image/png" href="img/favicon.png">
 
     <meta charset="UTF-8">
 
@@ -145,6 +146,128 @@
                                 <option>Cajas Universidad</option>
 
                             </select>
+                            <!-- ================= TARJETA ================= -->
+
+<div id="pagoTarjeta" class="mt-4">
+
+    <div class="card border-primary">
+
+        <div class="card-header">
+
+            <i class="bi bi-credit-card-fill me-2"></i>
+
+            Pago con Tarjeta
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="mb-3">
+
+                <label>Número de tarjeta</label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="1234 5678 9012 3456">
+
+            </div>
+
+            <div class="row">
+
+                <div class="col">
+
+                    <label>Vencimiento</label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="MM/AA">
+
+                </div>
+
+                <div class="col">
+
+                    <label>CVV</label>
+
+                    <input
+                        type="password"
+                        class="form-control"
+                        placeholder="123">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= OXXO ================= -->
+
+<div id="pagoOxxo" class="mt-4 d-none">
+
+    <div class="alert alert-warning">
+
+        <h5>
+
+            <i class="bi bi-shop me-2"></i>
+
+            Pago en OXXO
+
+        </h5>
+
+        <p>
+
+            Se generará un comprobante para que realices el pago
+            en cualquier tienda OXXO.
+
+        </p>
+
+        <strong>
+
+            Comisión aproximada: $12 MXN
+
+        </strong>
+
+    </div>
+
+</div>
+
+<!-- ================= CAJAS ================= -->
+
+<div id="pagoCajas" class="mt-4 d-none">
+
+    <div class="alert alert-info">
+
+        <h5>
+
+            <i class="bi bi-bank me-2"></i>
+
+            Pago en Cajas
+
+        </h5>
+
+        <p>
+
+            Presenta el comprobante en las cajas de
+            NovaTech University.
+
+        </p>
+
+        <strong>
+
+            Horario:
+
+        </strong>
+
+        Lunes a Viernes de 8:00 a 16:00 hrs.
+
+    </div>
+
+</div>
 
                         </div>
 

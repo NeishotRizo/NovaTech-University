@@ -1,34 +1,46 @@
 const btnPDF = document.getElementById("btnPDF");
 
-btnPDF.addEventListener("click", () => {
+const metodoPago = document.getElementById("metodoPago");
 
-    const datos = {
+const pagoTarjeta = document.getElementById("pagoTarjeta");
 
-        nombre: document.getElementById("nombre").value.trim(),
+const pagoOxxo = document.getElementById("pagoOxxo");
 
-        carrera: document.getElementById("carrera").value,
+const pagoCajas = document.getElementById("pagoCajas");
 
-        metodoPago: document.getElementById("metodoPago").value
+function mostrarMetodoPago() {
 
-    };
+    pagoTarjeta.classList.add("d-none");
 
-    if(datos.nombre===""){
+    pagoOxxo.classList.add("d-none");
 
-        Swal.fire({
+    pagoCajas.classList.add("d-none");
 
-            icon:"warning",
+    if (metodoPago.value === "Tarjeta") {
 
-            title:"Campos incompletos",
-
-            text:"Completa toda la información.",
-
-            confirmButtonColor:"#F47C20"
-
-        });
-
-        return;
+        pagoTarjeta.classList.remove("d-none");
 
     }
+
+    else if (metodoPago.value === "OXXO") {
+
+        pagoOxxo.classList.remove("d-none");
+
+    }
+
+    else if (metodoPago.value === "Cajas Universidad") {
+
+        pagoCajas.classList.remove("d-none");
+
+    }
+
+}
+
+metodoPago.addEventListener("change", mostrarMetodoPago);
+
+mostrarMetodoPago();
+
+function generarPDF(datos) {
 
     fetch("/pdf", {
 
@@ -46,17 +58,17 @@ btnPDF.addEventListener("click", () => {
 
     .then((respuesta) => respuesta.blob())
 
-     .then((pdf) => {
+    .then((pdf) => {
 
         Swal.fire({
 
-            icon:"success",
+            icon: "success",
 
-            title:"Comprobante generado",
+            title: "Comprobante generado",
 
-            text:"Tu comprobante se abrirá en una nueva pestaña.",
+            text: "Tu comprobante se abrirá en una nueva pestaña.",
 
-            confirmButtonColor:"#F47C20"
+            confirmButtonColor: "#F47C20"
 
         }).then(() => {
 
@@ -74,16 +86,78 @@ btnPDF.addEventListener("click", () => {
 
         Swal.fire({
 
-            icon:"error",
+            icon: "error",
 
-            title:"Error",
+            title: "Error",
 
-            text:"No fue posible generar el comprobante.",
+            text: "No fue posible generar el comprobante.",
 
-            confirmButtonColor:"#F47C20"
+            confirmButtonColor: "#F47C20"
 
         });
 
     });
+
+}
+
+btnPDF.addEventListener("click", () => {
+
+    const datos = {
+
+        nombre: document.getElementById("nombre").value.trim(),
+
+        carrera: document.getElementById("carrera").value,
+
+        metodoPago: metodoPago.value
+
+    };
+
+    if (datos.nombre === "") {
+
+        Swal.fire({
+
+            icon: "warning",
+
+            title: "Campos incompletos",
+
+            text: "Completa toda la información.",
+
+            confirmButtonColor: "#F47C20"
+
+        });
+
+        return;
+
+    }
+
+    if (datos.metodoPago === "Tarjeta") {
+
+        Swal.fire({
+
+            icon: "success",
+
+            title: "Pago aprobado",
+
+            text: "La transacción fue realizada exitosamente.",
+
+            confirmButtonText: "Generar comprobante",
+
+            confirmButtonColor: "#F47C20",
+
+            allowOutsideClick: false
+
+        }).then(() => {
+
+            generarPDF(datos);
+
+        });
+
+    }
+
+    else {
+
+        generarPDF(datos);
+
+    }
 
 });

@@ -1,58 +1,166 @@
 const PDFDocument = require("pdfkit");
+const path = require("path");
 
 const generarPDF = (req, res) => {
 
     const datos = req.body;
 
-    const doc = new PDFDocument();
+    const doc = new PDFDocument({
 
-    res.setHeader("Content-Type", "application/pdf");
+        margin:50
+
+    });
+
+    res.setHeader("Content-Type","application/pdf");
 
     res.setHeader(
+
         "Content-Disposition",
-        "inline; filename=recibo.pdf"
+
+        "inline; filename=ReciboPago.pdf"
+
     );
 
     doc.pipe(res);
 
-    doc.fontSize(24).text("NovaTech University", {
-        align: "center"
+   doc.image(path.join(__dirname, "../img/logo.png"), 230, 20, {
+        width: 130
+    });
+
+    doc.moveDown(3);
+
+    // ENCABEZADO
+
+    doc
+    .fontSize(26)
+    .fillColor("#F47C20")
+    .text("VolcaTech University",{
+
+        align:"center"
+
+    });
+
+    doc
+    .moveDown(0.5);
+
+    doc
+    .fontSize(18)
+    .fillColor("black")
+    .text("RECIBO OFICIAL DE PAGO",{
+
+        align:"center"
+
     });
 
     doc.moveDown();
 
-    doc.fontSize(18).text("Recibo de Pago");
+    doc
+    .moveTo(50,120)
+    .lineTo(550,120)
+    .stroke();
+
+    // INFORMACIÓN
 
     doc.moveDown();
 
-    doc.fontSize(12);
+    doc.fontSize(13);
 
-    doc.text(`Nombre: ${datos.nombre}`);
+    doc.text(`Alumno: ${datos.nombre}`);
 
     doc.text(`Carrera: ${datos.carrera}`);
 
-    doc.text(`Metodo de pago: ${datos.metodoPago}`);
+    doc.text(`Motivo: Examen de Admisión`);
 
-    doc.text(`Total: $850 MXN`);
+    doc.text(`Método de pago: ${datos.metodoPago}`);
 
-    doc.text(`Fecha: ${new Date().toLocaleDateString()}`);
+    doc.text(`Monto pagado: $850 MXN`);
 
-    doc.text(`Hora: ${new Date().toLocaleTimeString()}`);
+    doc.text(`Fecha del pago: ${new Date().toLocaleDateString()}`);
+
+    doc.text(`Hora del pago: ${new Date().toLocaleTimeString()}`);
 
     doc.moveDown();
 
-    doc.text("Lugar del examen:");
+    doc.fontSize(15);
 
-    doc.text("Campus Central");
+    doc.fillColor("#F47C20");
 
-    doc.text("08:00 AM");
+    doc.text("Información del examen");
 
-    doc.text("15 de Agosto de 2026");
+    doc.fillColor("black");
+
+    doc.moveDown(0.5);
+
+    doc.fontSize(13);
+
+    doc.text("Lugar: Campus Central");
+
+    doc.text("Edificio: Ingeniería");
+
+    doc.text("Salón: Laboratorio A");
+
+    doc.text("Fecha del examen: 15 de Agosto de 2026");
+
+    doc.text("Hora del examen: 08:00 AM");
+
+    doc.moveDown(2);
+
+    doc
+    .moveTo(50,430)
+    .lineTo(550,430)
+    .stroke();
+
+    doc.moveDown();
+
+    doc
+    .fontSize(11)
+    .text(
+
+        "Este comprobante deberá presentarse el día del examen para poder ingresar al campus.",
+
+        {
+
+            align:"justify"
+
+        }
+
+    );
+
+    doc.moveDown();
+
+    doc
+    .fontSize(12)
+    .fillColor("#F47C20")
+    .text(
+
+        "Gracias por elegir VolcaTech University.",
+
+        {
+
+            align:"center"
+
+        }
+
+    );
+
+    doc.moveDown();
+
+    doc.fontSize(11);
+
+    doc.fillColor("black");
+
+    doc.text("Dirección: Av. Universidad #1000, Aguascalientes, México");
+
+    doc.text("Teléfono: (449) 123-4567");
+
+    doc.text("Correo: admisiones@volcatech.edu.mx");
 
     doc.end();
 
 };
 
-module.exports = {
+module.exports={
+
     generarPDF
+
 };

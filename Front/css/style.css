@@ -30,6 +30,30 @@
                     RESET
 ======================================================*/
 
+
+.logo-navbar{
+
+    width: 60px;
+
+    height: 60px;
+
+    object-fit: contain;
+
+    margin-right: 10px;
+
+}
+
+
+.carousel-img{
+
+    height: 500px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+}
+
 *{
 
     margin:0;
@@ -600,35 +624,6 @@ img{
 
 }
 
-
-
-/*======================================================
-                PLACEHOLDER IMAGES
-======================================================*/
-
-.career-image::before{
-
-    content:"Imagen";
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    color:white;
-
-    font-size:1.5rem;
-
-    font-weight:600;
-
-    letter-spacing:2px;
-
-}
 
 /*======================================================
                     CTA
