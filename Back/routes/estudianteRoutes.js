@@ -8,4 +8,6 @@ router.post("/registro", estudianteController.registrarEstudiante);
 
 router.get("/estudiantes", estudianteController.obtenerEstudiantes);
 
+router.get("/estudiantes/carrera/:carrera", estudianteController.obtenerPorCarrera);
+
 module.exports = router;

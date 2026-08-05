@@ -30,7 +30,21 @@ const obtenerEstudiantes = (callback) => {
 
 };
 
+const obtenerPorCarrera = (carrera, callback) => {
+
+    const sql = `
+        SELECT *
+        FROM estudiantes
+        WHERE carrera = ?
+        ORDER BY promedio DESC
+    `;
+
+    db.query(sql, [carrera], callback);
+
+};
+
 module.exports = {
     registrarEstudiante,
-    obtenerEstudiantes
+    obtenerEstudiantes,
+    obtenerPorCarrera
 };

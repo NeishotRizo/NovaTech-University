@@ -35,7 +35,28 @@ const obtenerEstudiantes = (req, res) => {
 
 };
 
+const obtenerPorCarrera = (req, res) => {
+
+    const carrera = req.params.carrera;
+
+    estudianteModel.obtenerPorCarrera(carrera, (error, resultados) => {
+
+        if (error) {
+
+            return res.status(500).json({
+                mensaje: "Error al consultar"
+            });
+
+        }
+
+        res.json(resultados);
+
+    });
+
+};
+
 module.exports = {
     registrarEstudiante,
-    obtenerEstudiantes
+    obtenerEstudiantes,
+    obtenerPorCarrera
 };
