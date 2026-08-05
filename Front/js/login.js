@@ -8,7 +8,7 @@ formulario.addEventListener("submit", (e) => {
 
     const password = document.getElementById("password").value;
 
-    fetch("http://localhost:3000/login", {
+    fetch("/login", {
 
         method: "POST",
 

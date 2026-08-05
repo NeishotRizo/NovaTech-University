@@ -33,7 +33,7 @@ formulario.addEventListener("submit", (e)=>{
     console.log(estudiante);
 
     //Hacemos fetch con nuestro objeto estudiante para mandarlo al backend
-    fetch("http://localhost:3000/registro", {
+    fetch("/registro", {
 
         method: "POST",
 
@@ -48,8 +48,29 @@ formulario.addEventListener("submit", (e)=>{
     .then((respuesta) => respuesta.json())
     .then((datos) => {
 
-        alert(datos.mensaje);
-        formulario.reset();
+        Swal.fire({
+
+            icon: "success",
+
+            title: "¡Registro exitoso!",
+
+            text: "Ahora procederás al pago del examen de admisión.",
+
+            confirmButtonText: "Continuar al pago",
+
+            confirmButtonColor: "#F47C20",
+
+            allowOutsideClick: false,
+
+            allowEscapeKey: false
+
+        }).then(() => {
+
+            formulario.reset();
+
+            window.location.href = "pago.html";
+
+        });
 
     })
     .catch((error) => {

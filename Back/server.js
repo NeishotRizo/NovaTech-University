@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 
@@ -15,6 +16,8 @@ require("./config/database");
 
 app.use(cors());
 app.use(express.json());
+// Servir archivos estáticos del Frontend
+app.use(express.static(path.join(__dirname, "../Front")));
 
 //Uses de Rutas
 app.use("/",estudianteRoutes);
@@ -24,6 +27,12 @@ app.use("/", contactoRoutes);
 
 
 const PORT = process.env.PORT;
+// pagina inicio
+app.get("/", (req, res) => {
+
+    res.sendFile(path.join(__dirname, "../Front/index.html"));
+
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor iniciado en el puerto ${PORT}`);

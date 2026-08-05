@@ -75,7 +75,7 @@ function cargarEstudiantes(url){
 }
 
 // Al abrir la página muestra todos
-cargarEstudiantes("http://localhost:3000/estudiantes");
+cargarEstudiantes("/estudiantes");
 
 // Cuando se presiona Buscar
 btnBuscar.addEventListener("click", ()=>{
@@ -84,12 +84,12 @@ btnBuscar.addEventListener("click", ()=>{
 
     if(carrera === ""){
 
-        cargarEstudiantes("http://localhost:3000/estudiantes");
+        cargarEstudiantes("/estudiantes");
 
     }else{
 
         cargarEstudiantes(
-            `http://localhost:3000/estudiantes/carrera/${carrera}`
+            `/estudiantes/carrera/${carrera}`
         );
 
     }

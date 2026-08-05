@@ -30,7 +30,7 @@ btnPDF.addEventListener("click", () => {
 
     }
 
-    fetch("http://localhost:3000/pdf", {
+    fetch("/pdf", {
 
         method: "POST",
 

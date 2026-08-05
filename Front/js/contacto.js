@@ -16,7 +16,7 @@ formulario.addEventListener("submit",(e)=>{
 
     };
 
-    fetch("http://localhost:3000/contacto",{
+    fetch("/contacto",{
 
         method:"POST",
 
