@@ -42,7 +42,21 @@ formulario.addEventListener("submit", (e) => {
 
     .then((datos) => {
 
-        alert(datos.mensaje);
+        Swal.fire({
+
+            icon:"success",
+
+            title:"Bienvenido",
+
+            text:datos.mensaje,
+
+            confirmButtonColor:"#F47C20"
+
+        }).then(()=>{
+
+            window.location.href="admin.html";
+
+        });
 
         window.location.href = "admin.html";
 
@@ -50,7 +64,17 @@ formulario.addEventListener("submit", (e) => {
 
     .catch((error) => {
 
-        alert(error.message);
+        Swal.fire({
+
+            icon:"error",
+
+            title:"Error",
+
+            text:"Usuario o contraseña incorrectos.",
+
+            confirmButtonColor:"#F47C20"
+
+        });
 
     });
 
